@@ -348,6 +348,11 @@
     </div>
 
     <script>
+        // Helper function to get stored reports
+        function getStoredReports() {
+            return JSON.parse(localStorage.getItem('scamReports') || '[]');
+        }
+
         // URL Checker Function
         function checkURL() {
             const urlInput = document.getElementById('urlInput').value.trim();
@@ -364,10 +369,20 @@
             let riskScore = 0;
             let warnings = [];
 
+            // Extract domain from URL
+            let domain = urlInput.toLowerCase();
+            try {
+                const url = new URL(urlInput.startsWith('http') ? urlInput : 'https://' + urlInput);
+                domain = url.hostname;
+            } catch (e) {
+                // If URL parsing fails, use the input as-is
+                domain = urlInput.toLowerCase().replace(/^https?:\/\//, '').split('/')[0];
+            }
+
             // Check for suspicious TLDs
             const suspiciousTLDs = ['.xyz', '.top', '.win', '.club', '.online', '.live'];
             suspiciousTLDs.forEach(tld => {
-                if (urlInput.toLowerCase().includes(tld)) {
+                if (domain.endsWith(tld)) {
                     riskScore += 2;
                     warnings.push('Estensione dominio sospetta (' + tld + ')');
                 }
@@ -379,16 +394,16 @@
                 warnings.push('Sito non sicuro (manca HTTPS)');
             }
 
-            // Check for suspicious keywords
+            // Check for suspicious keywords in domain
             const suspiciousKeywords = ['invest', 'profit', 'bitcoin', 'crypto', 'trading', 'forex', 'wallet', 'earn', 'guaranteed', 'money'];
             suspiciousKeywords.forEach(keyword => {
-                if (urlInput.toLowerCase().includes(keyword)) {
+                if (domain.includes(keyword)) {
                     riskScore += 1;
                 }
             });
 
             // Check for numbers in domain (common in scams)
-            if (/\d{3,}/.test(urlInput)) {
+            if (/\d{3,}/.test(domain)) {
                 riskScore += 2;
                 warnings.push('Presenza di molti numeri nel dominio');
             }
@@ -440,7 +455,7 @@
             }
 
             // Save to localStorage
-            const reports = JSON.parse(localStorage.getItem('scamReports') || '[]');
+            const reports = getStoredReports();
             const newReport = {
                 url: scamURL,
                 description: description,
@@ -472,19 +487,22 @@
 
         // Update report counter on page load
         function updateReportCounter() {
-            const reports = JSON.parse(localStorage.getItem('scamReports') || '[]');
+            const reports = getStoredReports();
             console.log('Segnalazioni salvate localmente:', reports.length);
         }
 
         // Initialize on load
         window.addEventListener('DOMContentLoaded', function() {
             updateReportCounter();
-        });
-
-        // Allow Enter key on URL input
-        document.getElementById('urlInput')?.addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                checkURL();
+            
+            // Allow Enter key on URL input
+            const urlInput = document.getElementById('urlInput');
+            if (urlInput) {
+                urlInput.addEventListener('keypress', function(e) {
+                    if (e.key === 'Enter') {
+                        checkURL();
+                    }
+                });
             }
         });
     </script>
