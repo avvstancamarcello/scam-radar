@@ -16,9 +16,9 @@ scam-radar/
 
 ## Come Utilizzare
 
-1. Apri `index.html` nel tuo browser per visualizzare il sito
-2. Modifica i file HTML, CSS e JavaScript secondo le tue esigenze
-3. Il progetto è pronto per ricevere la tua pagina web personalizzata
+- Apri `index.html` nel tuo browser per visualizzare il sito
+- Modifica i file HTML, CSS e JavaScript secondo le tue esigenze
+- Il progetto è pronto per ricevere la tua pagina web personalizzata
 
 ## Sviluppo
 
