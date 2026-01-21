@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Strumenti per combattere le truffe finanziarie online - piattaforme di trading false e investimenti fraudolenti">
+    <title>Scam Radar - Combatti le Truffe Finanziarie Online</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            color: #764ba2;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            color: #666;
+            font-size: 1.2em;
+        }
+
+        .alert-banner {
+            background: #ff6b6b;
+            color: white;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .tool-card {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+        }
+
+        .tool-card h2 {
+            color: #764ba2;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .tool-card h3 {
+            color: #667eea;
+            margin: 20px 0 10px 0;
+            font-size: 1.2em;
+        }
+
+        .checklist {
+            list-style: none;
+            margin: 10px 0;
+        }
+
+        .checklist li {
+            padding: 10px;
+            margin: 5px 0;
+            background: #f8f9fa;
+            border-radius: 5px;
+            position: relative;
+            padding-left: 35px;
+        }
+
+        .checklist li:before {
+            content: "⚠️";
+            position: absolute;
+            left: 10px;
+        }
+
+        .input-group {
+            margin: 15px 0;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .input-group input,
+        .input-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s ease;
+        }
+
+        .input-group input:focus,
+        .input-group textarea:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            font-weight: bold;
+        }
+
+        button:hover {
+            transform: scale(1.05);
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .result.safe {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+
+        .result.warning {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            color: #856404;
+        }
+
+        .result.danger {
+            background: #f8d7da;
+            border: 2px solid #dc3545;
+            color: #721c24;
+        }
+
+        .red-flags {
+            background: #fff3cd;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 5px solid #ffc107;
+        }
+
+        .red-flags ul {
+            margin-left: 20px;
+        }
+
+        .red-flags li {
+            margin: 8px 0;
+        }
+
+        .resources {
+            background: white;
+            padding: 25px;
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+
+        .resources h2 {
+            color: #764ba2;
+            margin-bottom: 15px;
+        }
+
+        .resources a {
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .resources a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 20px;
+            border-radius: 15px;
+            margin-top: 30px;
+            text-align: center;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            .tools-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛡️ Scam Radar</h1>
+            <p>Strumenti per Combattere le Truffe Finanziarie Online</p>
+        </header>
+
+        <div class="alert-banner">
+            ⚠️ ATTENZIONE: Non investire mai denaro basandoti solo su promesse di guadagni rapidi e garantiti!
+        </div>
+
+        <div class="tools-grid">
+            <!-- URL Checker Tool -->
+            <div class="tool-card">
+                <h2>🔍 Verifica Sito Web</h2>
+                <p>Controlla se un sito web potrebbe essere una truffa analizzando l'URL</p>
+                
+                <div class="input-group">
+                    <label for="urlInput">Inserisci l'URL del sito:</label>
+                    <input type="text" id="urlInput" placeholder="https://esempio.com">
+                </div>
+                
+                <button onclick="checkURL()">Verifica URL</button>
+                
+                <div id="urlResult" class="result"></div>
+            </div>
+
+            <!-- Scam Checklist Tool -->
+            <div class="tool-card">
+                <h2>✅ Checklist Truffe</h2>
+                <p>Verifica se il sito o l'offerta presenta segnali di allerta</p>
+                
+                <ul class="checklist">
+                    <li>Promesse di guadagni irrealistici (es. "10x in 1 settimana")</li>
+                    <li>Richiesta di investimento minimo urgente</li>
+                    <li>Nessuna informazione sulla società o licenze</li>
+                    <li>Recensioni false o solo positive</li>
+                    <li>Pressione a investire rapidamente</li>
+                    <li>Difficoltà a prelevare i fondi</li>
+                    <li>Contatti solo via social media o WhatsApp</li>
+                    <li>Sito web di recente creazione</li>
+                </ul>
+                
+                <div class="red-flags">
+                    <strong>🚩 Segnali di Pericolo Immediato:</strong>
+                    <ul>
+                        <li>Ti chiedono di inviare denaro tramite bonifico irrintracciabile</li>
+                        <li>Non puoi prelevare i tuoi soldi</li>
+                        <li>Ti chiedono credenziali bancarie o password</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Report Tool -->
+            <div class="tool-card">
+                <h2>📢 Segnala una Truffa</h2>
+                <p>Aiuta altri a proteggersi segnalando siti o piattaforme sospette</p>
+                
+                <div class="input-group">
+                    <label for="scamURL">URL del sito sospetto:</label>
+                    <input type="text" id="scamURL" placeholder="https://sito-sospetto.com">
+                </div>
+                
+                <div class="input-group">
+                    <label for="scamDescription">Descrizione della truffa:</label>
+                    <textarea id="scamDescription" rows="4" placeholder="Descrivi cosa è successo..."></textarea>
+                </div>
+                
+                <button onclick="reportScam()">Salva Segnalazione</button>
+                
+                <div id="reportResult" class="result"></div>
+            </div>
+
+            <!-- Educational Info -->
+            <div class="tool-card">
+                <h2>📚 Tipi Comuni di Truffe</h2>
+                
+                <h3>1. Piattaforme di Trading False</h3>
+                <p>Siti che simulano piattaforme di trading legittime ma trattengono i fondi degli utenti.</p>
+                
+                <h3>2. Schemi Ponzi</h3>
+                <p>Promettono rendimenti elevati pagando i primi investitori con i soldi dei nuovi arrivati.</p>
+                
+                <h3>3. Phishing Finanziario</h3>
+                <p>Email o messaggi che fingono di essere banche o servizi finanziari per rubare credenziali.</p>
+                
+                <h3>4. Pump and Dump</h3>
+                <p>Manipolazione artificiale del prezzo di asset per trarre profitto a danno di altri.</p>
+                
+                <h3>5. Falsi Consulenti Finanziari</h3>
+                <p>Persone che si spacciano per esperti ma non hanno licenze o credenziali.</p>
+            </div>
+        </div>
+
+        <div class="resources">
+            <h2>📖 Risorse Utili</h2>
+            <ul>
+                <li><strong>CONSOB</strong> - Commissione Nazionale per le Società e la Borsa: <a href="https://www.consob.it" target="_blank">www.consob.it</a></li>
+                <li><strong>Polizia Postale</strong> - Segnalazione truffe online: <a href="https://www.commissariatodips.it" target="_blank">www.commissariatodips.it</a></li>
+                <li><strong>Banca d'Italia</strong> - Educazione finanziaria: <a href="https://www.bancaditalia.it" target="_blank">www.bancaditalia.it</a></li>
+                <li><strong>ACF - Arbitro per le Controversie Finanziarie</strong>: <a href="https://www.acf.consob.it" target="_blank">www.acf.consob.it</a></li>
+            </ul>
+        </div>
+
+        <footer>
+            <p>⚠️ Questo strumento è solo a scopo informativo. In caso di dubbi, consulta sempre un professionista finanziario certificato.</p>
+            <p>&copy; 2026 Scam Radar - Proteggiti dalle truffe finanziarie online</p>
+        </footer>
+    </div>
+
+    <script>
+        // URL Checker Function
+        function checkURL() {
+            const urlInput = document.getElementById('urlInput').value.trim();
+            const resultDiv = document.getElementById('urlResult');
+            
+            if (!urlInput) {
+                resultDiv.style.display = 'block';
+                resultDiv.className = 'result warning';
+                resultDiv.innerHTML = '⚠️ Per favore, inserisci un URL da verificare.';
+                return;
+            }
+
+            // Check for common scam indicators
+            let riskScore = 0;
+            let warnings = [];
+
+            // Check for suspicious TLDs
+            const suspiciousTLDs = ['.xyz', '.top', '.win', '.club', '.online', '.live'];
+            suspiciousTLDs.forEach(tld => {
+                if (urlInput.toLowerCase().includes(tld)) {
+                    riskScore += 2;
+                    warnings.push('Estensione dominio sospetta (' + tld + ')');
+                }
+            });
+
+            // Check for HTTPS
+            if (!urlInput.toLowerCase().startsWith('https://')) {
+                riskScore += 3;
+                warnings.push('Sito non sicuro (manca HTTPS)');
+            }
+
+            // Check for suspicious keywords
+            const suspiciousKeywords = ['invest', 'profit', 'bitcoin', 'crypto', 'trading', 'forex', 'wallet', 'earn', 'guaranteed', 'money'];
+            suspiciousKeywords.forEach(keyword => {
+                if (urlInput.toLowerCase().includes(keyword)) {
+                    riskScore += 1;
+                }
+            });
+
+            // Check for numbers in domain (common in scams)
+            if (/\d{3,}/.test(urlInput)) {
+                riskScore += 2;
+                warnings.push('Presenza di molti numeri nel dominio');
+            }
+
+            // Display result
+            resultDiv.style.display = 'block';
+            
+            if (riskScore >= 5) {
+                resultDiv.className = 'result danger';
+                resultDiv.innerHTML = `
+                    <strong>🚨 ALTO RISCHIO DI TRUFFA</strong><br>
+                    Questo URL presenta diversi segnali di allerta:<br>
+                    <ul style="margin-top: 10px;">
+                        ${warnings.map(w => `<li>${w}</li>`).join('')}
+                    </ul>
+                    <strong>Consiglio:</strong> NON investire denaro su questo sito.
+                `;
+            } else if (riskScore >= 2) {
+                resultDiv.className = 'result warning';
+                resultDiv.innerHTML = `
+                    <strong>⚠️ RISCHIO MODERATO</strong><br>
+                    Alcuni elementi potrebbero essere sospetti:<br>
+                    <ul style="margin-top: 10px;">
+                        ${warnings.map(w => `<li>${w}</li>`).join('')}
+                    </ul>
+                    <strong>Consiglio:</strong> Fai ricerche approfondite prima di procedere.
+                `;
+            } else {
+                resultDiv.className = 'result safe';
+                resultDiv.innerHTML = `
+                    <strong>✅ NESSUN SEGNALE EVIDENTE</strong><br>
+                    L'URL non presenta segnali evidenti di truffa, ma rimani sempre vigile.<br>
+                    Verifica sempre le licenze e le recensioni indipendenti.
+                `;
+            }
+        }
+
+        // Report Scam Function
+        function reportScam() {
+            const scamURL = document.getElementById('scamURL').value.trim();
+            const description = document.getElementById('scamDescription').value.trim();
+            const resultDiv = document.getElementById('reportResult');
+
+            if (!scamURL || !description) {
+                resultDiv.style.display = 'block';
+                resultDiv.className = 'result warning';
+                resultDiv.innerHTML = '⚠️ Compila tutti i campi per segnalare una truffa.';
+                return;
+            }
+
+            // Save to localStorage
+            const reports = JSON.parse(localStorage.getItem('scamReports') || '[]');
+            const newReport = {
+                url: scamURL,
+                description: description,
+                timestamp: new Date().toISOString()
+            };
+            reports.push(newReport);
+            localStorage.setItem('scamReports', JSON.stringify(reports));
+
+            // Show success message
+            resultDiv.style.display = 'block';
+            resultDiv.className = 'result safe';
+            resultDiv.innerHTML = `
+                <strong>✅ Segnalazione Salvata</strong><br>
+                Grazie per aver contribuito a proteggere la comunità!<br>
+                <br>
+                <strong>Prossimi Passi Consigliati:</strong><br>
+                1. Segnala alla <a href="https://www.commissariatodips.it" target="_blank">Polizia Postale</a><br>
+                2. Contatta la <a href="https://www.consob.it" target="_blank">CONSOB</a><br>
+                3. Informa la tua banca se hai condiviso dati
+            `;
+
+            // Clear form
+            document.getElementById('scamURL').value = '';
+            document.getElementById('scamDescription').value = '';
+
+            // Update counter
+            updateReportCounter();
+        }
+
+        // Update report counter on page load
+        function updateReportCounter() {
+            const reports = JSON.parse(localStorage.getItem('scamReports') || '[]');
+            console.log('Segnalazioni salvate localmente:', reports.length);
+        }
+
+        // Initialize on load
+        window.addEventListener('DOMContentLoaded', function() {
+            updateReportCounter();
+        });
+
+        // Allow Enter key on URL input
+        document.getElementById('urlInput')?.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkURL();
+            }
+        });
+    </script>
+</body>
+</html>
