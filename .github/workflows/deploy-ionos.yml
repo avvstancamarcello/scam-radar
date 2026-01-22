@@ -27,15 +27,15 @@ jobs:
           persist-credentials: false  # Non salva credenziali Git
           
       - name: 📤 Deploy via SFTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.4
         with:
           server: ${{ secrets.IONOS_FTP_HOST }}
           username: ${{ secrets.IONOS_FTP_USER }}
           password: ${{ secrets.IONOS_FTP_PASSWORD }}
-          local-dir: ./
-          server-dir: /
-          protocol: ftps
-          port: 21
+          local_path: './*'
+          remote_path: '/'
+          sftp_only: true
+          port: 22
           
       - name: ✅ Deploy completato
         run: |
