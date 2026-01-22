@@ -1,0 +1,44 @@
+# GitHub Actions Workflow for IONOS SFTP Deploy
+# Deploy automatico su www.scam-radar.com via SFTP
+# ⚠️ WORKFLOW UNIDIREZIONALE: Solo push locale → GitHub → IONOS
+# GitHub NON può modificare il repository senza autorizzazione
+
+name: 🚀 Deploy to IONOS (scam-radar.com)
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:  # Permette deploy manuale
+
+# Blocca qualsiasi scrittura sul repository
+permissions:
+  contents: read  # Solo lettura, nessuna modifica possibile
+
+jobs:
+  deploy:
+    name: 📤 Upload to IONOS SFTP
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: 📥 Checkout repository (read-only)
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: false  # Non salva credenziali Git
+          
+      - name: 📤 Deploy via SFTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.IONOS_FTP_HOST }}
+          username: ${{ secrets.IONOS_FTP_USER }}
+          password: ${{ secrets.IONOS_FTP_PASSWORD }}
+          local-dir: ./
+          server-dir: /
+          protocol: ftps
+          port: 21
+          
+      - name: ✅ Deploy completato
+        run: |
+          echo "🎉 Deploy su www.scam-radar.com completato!"
+          echo "📅 Data: $(date)"
+          echo "⚠️ Workflow READ-ONLY: nessuna modifica al repository"
