@@ -1108,8 +1108,24 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 65.0s
             </div>
 
-            <!-- Lancetta gialla che collega SCAM a Pianeta $ durante semicerchio destro -->
-            <div id="lancetta-scam" class="lancetta-scam" style="top: 50%; left: 50%;"></div>
+            <!-- SVG Lancetta gialla che collega SCAM a Pianeta $ -->
+            <svg id="lancetta-svg" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 18; display: none;">
+                <defs>
+                    <filter id="glow-lancetta">
+                        <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+                        <feMerge>
+                            <feMergeNode in="coloredBlur"/>
+                            <feMergeNode in="SourceGraphic"/>
+                        </feMerge>
+                    </filter>
+                </defs>
+                <!-- Linea principale -->
+                <line id="lancetta-line" x1="0" y1="0" x2="0" y2="0" stroke="#FFD700" stroke-width="5" stroke-linecap="round" filter="url(#glow-lancetta)"/>
+                <!-- Cerchio al centro (perno su SCAM) -->
+                <circle id="lancetta-perno" cx="0" cy="0" r="8" fill="#FFD700" filter="url(#glow-lancetta)"/>
+                <!-- Simbolo $ sulla punta -->
+                <text id="lancetta-dollaro" x="0" y="0" fill="#00FF7F" font-size="18" font-weight="bold" text-anchor="middle" dominant-baseline="middle" style="text-shadow: 0 0 10px #00FF7F;">$</text>
+            </svg>
 
             <!-- Planet 8: Galaxy You$ (Capitale $) - parte dopo 1 secondo, primo pianeta -->
             <!-- Wrapper container for offset-path animation -->
@@ -5303,9 +5319,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const planetScudo = document.getElementById('planet-scudo');
             const planetCroceRossa = document.getElementById('planet-croce-rossa');
             const scamPlanet = document.getElementById('scam-planet');
-            const lancettaScam = document.getElementById('lancetta-scam');
             const popupRetro = document.getElementById('popup-retro');
             const countdownElement = document.getElementById('scam-countdown');
+            
+            // Elementi SVG lancetta
+            const lancettaSvg = document.getElementById('lancetta-svg');
+            const lancettaLine = document.getElementById('lancetta-line');
+            const lancettaPerno = document.getElementById('lancetta-perno');
+            const lancettaDollaro = document.getElementById('lancetta-dollaro');
             
             // Configurazione tempistiche (rallentate del 30%)
             const CYCLE_DURATION = 65000; // 65 secondi invece di 50
@@ -5339,50 +5360,56 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 }, 100);
             }
             
-            // Funzione per aggiornare la lancetta gialla - come lancetta di cronometro
-            // Centro nel pianeta SCAM, punta verso il pianeta $ (Capitale)
+            // Funzione per aggiornare la lancetta SVG - collega centro SCAM a centro Capitale $
             function updateLancetta() {
-                if (!planetCapitale || !scamPlanet || !lancettaScam) return;
+                if (!planetCapitale || !scamPlanet || !lancettaLine) return;
                 
                 const capitaleRect = planetCapitale.getBoundingClientRect();
                 const scamRect = scamPlanet.getBoundingClientRect();
                 
-                // Centro della lancetta = centro del pianeta SCAM
-                const scamCenter = {
-                    x: scamRect.left + scamRect.width / 2,
-                    y: scamRect.top + scamRect.height / 2
-                };
+                // Centro del pianeta SCAM (inizio del segmento)
+                const scamX = scamRect.left + scamRect.width / 2;
+                const scamY = scamRect.top + scamRect.height / 2;
                 
-                // Punta della lancetta = centro del pianeta Capitale $
-                const capitaleCenter = {
-                    x: capitaleRect.left + capitaleRect.width / 2,
-                    y: capitaleRect.top + capitaleRect.height / 2
-                };
+                // Centro del pianeta Capitale $ (fine del segmento)
+                const capitaleX = capitaleRect.left + capitaleRect.width / 2;
+                const capitaleY = capitaleRect.top + capitaleRect.height / 2;
                 
-                // Calcola distanza e angolo dal centro SCAM verso Capitale
-                const dx = capitaleCenter.x - scamCenter.x;
-                const dy = capitaleCenter.y - scamCenter.y;
-                const distance = Math.sqrt(dx * dx + dy * dy);
-                const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+                // Aggiorna la linea SVG: da SCAM a Capitale
+                lancettaLine.setAttribute('x1', scamX);
+                lancettaLine.setAttribute('y1', scamY);
+                lancettaLine.setAttribute('x2', capitaleX);
+                lancettaLine.setAttribute('y2', capitaleY);
                 
-                // Posiziona la lancetta: parte dal centro di SCAM, punta verso Capitale
-                lancettaScam.style.left = scamCenter.x + 'px';
-                lancettaScam.style.top = scamCenter.y + 'px';
-                lancettaScam.style.width = distance + 'px';
-                lancettaScam.style.transform = `translateY(-50%) rotate(${angle}deg)`;
+                // Posiziona il perno (cerchio) sul centro di SCAM
+                lancettaPerno.setAttribute('cx', scamX);
+                lancettaPerno.setAttribute('cy', scamY);
+                
+                // Posiziona il simbolo $ vicino al pianeta Capitale
+                // Calcola un punto leggermente prima del centro del Capitale
+                const dx = capitaleX - scamX;
+                const dy = capitaleY - scamY;
+                const dist = Math.sqrt(dx * dx + dy * dy);
+                const offsetRatio = (dist - 30) / dist; // 30px prima del centro
+                const dollaroX = scamX + dx * offsetRatio;
+                const dollaroY = scamY + dy * offsetRatio;
+                
+                lancettaDollaro.setAttribute('x', dollaroX);
+                lancettaDollaro.setAttribute('y', dollaroY);
             }
             
-            // Attiva/disattiva lancetta
+            // Attiva/disattiva lancetta SVG
             function showLancetta() {
-                if (lancettaScam) {
-                    lancettaScam.classList.add('active');
-                    lancettaInterval = setInterval(updateLancetta, 50);
+                if (lancettaSvg) {
+                    lancettaSvg.style.display = 'block';
+                    lancettaInterval = setInterval(updateLancetta, 30); // 30fps per fluidità
+                    updateLancetta(); // Prima chiamata immediata
                 }
             }
             
             function hideLancetta() {
-                if (lancettaScam) {
-                    lancettaScam.classList.remove('active');
+                if (lancettaSvg) {
+                    lancettaSvg.style.display = 'none';
                     if (lancettaInterval) clearInterval(lancettaInterval);
                 }
             }
