@@ -1077,21 +1077,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 </a>
             </div>
 
-            <!-- Planet 6: Mental Health Impact - hippodrome animation -->
+            <!-- Planet 6: Mental Health Impact - Croce Rossa (fermo, poi locomotiva) -->
             <div style="position: absolute; top: 50%; left: calc(30% - 170px); width: 1180px; height: 340px; transform: translateY(-50%);">
-                <a href="#mental-health" class="planet galaxy-yous-hippodrome mental-health-planet" data-planet="mental" style="width: 60px; height: 60px; background: radial-gradient(circle at 30% 30%, #FFB6C1, #FF69B4, #FF1493); border-radius: 50%; box-shadow: 0 0 30px rgba(255, 105, 180, 0.9), 0 0 50px rgba(255, 20, 147, 0.7); cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; will-change: transform; position: absolute;">
-                    <!-- Red Cross -->
-                    <span style="display: inline-block; width: 35px; height: 35px; background: #DC143C; border-radius: 50%; position: relative; font-size: 28px; line-height: 35px; text-align: center;">
+                <a href="#mental-health" class="planet planet-croce-rossa" id="planet-croce-rossa" data-planet="mental" style="width: 60px; height: 60px; background: radial-gradient(circle at 30% 30%, #FFB6C1, #FF69B4, #FF1493); border-radius: 50%; box-shadow: 0 0 30px rgba(255, 105, 180, 0.9), 0 0 50px rgba(255, 20, 147, 0.7); cursor: pointer; text-decoration: none; display: flex; align-items: center; justify-content: center; will-change: transform; position: absolute;">
+                    <!-- Red Cross Icon -->
+                    <span class="croce-rossa-icon" style="display: inline-block; width: 35px; height: 35px; background: #DC143C; border-radius: 50%; position: relative; font-size: 28px; line-height: 35px; text-align: center;">
                         <span style="color: white; font-weight: bold;">+</span>
                     </span>
-                    <span style="position: absolute; bottom: -34px; left: 50%; transform: translateX(-50%); white-space: nowrap; color: #FF6B6B; font-size: 0.85rem; font-weight: 600; text-shadow: 0 0 10px rgba(255, 107, 107, 0.9);">❤️‍🩹 Mental Health Impact</span>
+                    <!-- Ambulanza Icon (hidden initially) -->
+                    <span class="ambulanza-icon" style="display: none;">🚑</span>
+                    <span class="planet-label" style="position: absolute; bottom: -34px; left: 50%; transform: translateX(-50%); white-space: nowrap; color: #FF6B6B; font-size: 0.85rem; font-weight: 600; text-shadow: 0 0 10px rgba(255, 107, 107, 0.9);">❤️‍🩹 Pronto Soccorso</span>
                 </a>
             </div>
 
-            <!-- Planet 7: Financial Defense Shield - hippodrome animation -->
+            <!-- Planet 7: Financial Defense Shield - Scudo (parte 2 sec dopo pianeta $) -->
             <div style="position: absolute; top: 50%; left: calc(30% - 170px); width: 1180px; height: 340px; transform: translateY(-50%);">
-                <a href="#you-shield" class="planet galaxy-yous-hippodrome" data-planet="defense" style="width: 90px; height: 90px; background: radial-gradient(circle at 30% 30%, #0f172a, #1d3557, #0f172a); border-radius: 50%; box-shadow: 0 0 30px rgba(56, 189, 248, 0.9), 0 0 50px rgba(34, 197, 94, 0.7); cursor: pointer; text-decoration: none; background-image: url('financial_defense_shield_final.svg'); background-size: contain; background-position: center; background-repeat: no-repeat; will-change: transform; position: absolute;">
-                    <span style="position: absolute; bottom: -38px; left: 50%; transform: translateX(-50%); white-space: nowrap; color: #7dd3fc; font-size: 0.85rem; font-weight: 600; text-shadow: 0 0 10px rgba(56, 189, 248, 0.9);">🛡️ Financial Defense</span>
+                <a href="#you-shield" class="planet planet-scudo" id="planet-scudo" data-planet="defense" style="width: 90px; height: 90px; background: radial-gradient(circle at 30% 30%, #0f172a, #1d3557, #0f172a); border-radius: 50%; box-shadow: 0 0 30px rgba(56, 189, 248, 0.9), 0 0 50px rgba(34, 197, 94, 0.7); cursor: pointer; text-decoration: none; background-image: url('financial_defense_shield_final.svg'); background-size: contain; background-position: center; background-repeat: no-repeat; will-change: transform; position: absolute;">
+                    <span style="position: absolute; bottom: -38px; left: 50%; transform: translateX(-50%); white-space: nowrap; color: #7dd3fc; font-size: 0.85rem; font-weight: 600; text-shadow: 0 0 10px rgba(56, 189, 248, 0.9);">🛡️ Scudo Finanziario</span>
                 </a>
             </div>
 
@@ -1101,16 +1103,19 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <span style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); white-space: nowrap; color: #ef4444; font-size: 0.9rem; font-weight: 700; text-shadow: 0 0 12px rgba(239, 68, 68, 0.9);">⚠️ SCAM</span>
             </div>
 
-            <!-- Countdown Timer: shows animation duration -->
+            <!-- Countdown Timer: shows animation duration (65s rallentato 30%) -->
             <div id="scam-countdown" style="position: absolute; top: 50%; left: 65%; transform: translate(-50%, -50%); font-size: 2.8rem; font-weight: bold; color: #00FF7F; text-shadow: 0 0 20px #00FF7F, 0 0 40px #00FF7F, 0 0 60px rgba(0, 255, 127, 0.6); font-family: 'Courier New', monospace; z-index: 25; letter-spacing: 0.1em;">
-                50.0s
+                65.0s
             </div>
 
-            <!-- Planet 8: Galaxy You$ (target to protect, comet) - hippodrome animation -->
+            <!-- Lancetta gialla che collega SCAM a Pianeta $ durante semicerchio destro -->
+            <div id="lancetta-scam" class="lancetta-scam" style="top: 50%; left: 50%;"></div>
+
+            <!-- Planet 8: Galaxy You$ (Capitale $) - parte dopo 1 secondo, primo pianeta -->
             <!-- Wrapper container for offset-path animation -->
             <div style="position: absolute; top: 50%; left: calc(30% - 170px); width: 1180px; height: 340px; transform: translateY(-50%);">
-                <a href="#you-shield" class="planet galaxy-yous-hippodrome" data-planet="galaxy-yous" style="width: 95px; height: 95px; background: radial-gradient(circle at 30% 30%, #1e293b, #0f172a, #020617); border-radius: 50%; box-shadow: 0 0 35px rgba(251, 191, 36, 0.9), 0 0 60px rgba(249, 115, 22, 0.7); cursor: pointer; text-decoration: none; background-image: url('logo_galaxy_yous.svg'); background-size: contain; background-position: center; background-repeat: no-repeat; will-change: transform; position: absolute;">
-                    <span style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); white-space: nowrap; color: #fbbf24; font-size: 0.85rem; font-weight: 600; text-shadow: 0 0 12px rgba(251, 191, 36, 0.9);">🎯 You$ da Proteggere</span>
+                <a href="#you-shield" class="planet planet-capitale" id="planet-capitale" data-planet="galaxy-yous" style="width: 95px; height: 95px; background: radial-gradient(circle at 30% 30%, #1e293b, #0f172a, #020617); border-radius: 50%; box-shadow: 0 0 35px rgba(251, 191, 36, 0.9), 0 0 60px rgba(249, 115, 22, 0.7); cursor: pointer; text-decoration: none; background-image: url('logo_galaxy_yous.svg'); background-size: contain; background-position: center; background-repeat: no-repeat; will-change: transform; position: absolute;">
+                    <span style="position: absolute; bottom: -40px; left: 50%; transform: translateX(-50%); white-space: nowrap; color: #fbbf24; font-size: 0.85rem; font-weight: 600; text-shadow: 0 0 12px rgba(251, 191, 36, 0.9);">💰 Capitale $</span>
                 </a>
 
                 <!-- Point meteors that crash into the You$ planet -->
@@ -1118,6 +1123,38 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 <div class="meteor" style="top: -5%; left: 60%; animation-delay: 1.5s;"></div>
                 <div class="meteor" style="top: 25%; left: 95%; animation-delay: 3s;"></div>
                 <div class="meteor" style="top: 60%; left: -10%; animation-delay: 4.5s;"></div>
+            </div>
+        </div>
+
+        <!-- Popup Retrò - Spiegazione Simbologia -->
+        <div id="popup-retro" class="popup-retro">
+            <div class="popup-retro-content">
+                <h2>⚠️ SCAM ALERT ⚠️</h2>
+                <p>> Hai appena assistito alla simulazione di una truffa finanziaria...</p>
+                
+                <div class="icon-legend">
+                    <div class="icon-item">
+                        <span>💰</span>
+                        <span><strong>Pianeta Capitale $</strong> - Il tuo risparmio che viaggia verso opportunità di investimento</span>
+                    </div>
+                    <div class="icon-item">
+                        <span>🛡️</span>
+                        <span><strong>Scudo Finanziario</strong> - La protezione che arriva TROPPO TARDI (2 secondi dopo)</span>
+                    </div>
+                    <div class="icon-item">
+                        <span>😈</span>
+                        <span><strong>SCAM</strong> - Il truffatore in agguato che sottrae capitali (lancetta gialla $)</span>
+                    </div>
+                    <div class="icon-item">
+                        <span>🚑</span>
+                        <span><strong>Pronto Soccorso</strong> - L'assistenza sanitaria/legale che interviene DOPO il furto</span>
+                    </div>
+                </div>
+                
+                <p>> La sequenza dimostra che senza protezione PREVENTIVA, il capitale viene derubato e resta solo il "pronto soccorso" post-truffa.</p>
+                <p>> CHIUDI per far partire il treno dei pianeti verso il punto di partenza...</p>
+                
+                <button id="popup-close-btn" onclick="closePopupAndStartTrain()">[ CHIUDI E CONTINUA ]</button>
             </div>
         </div>
 
@@ -1212,8 +1249,257 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             /* Crea percorso ippodromo usando offset-path */
             offset-path: var(--hippodrome-path);
             offset-rotate: 0deg;
-            animation: orbit-hippodrome 50s cubic-bezier(0.4, 0.0, 0.2, 1) infinite;
             will-change: offset-distance;
+            /* Animazione controllata via JavaScript - non automatica */
+            animation: none;
+        }
+        
+        /* Pianeta $ (capitale) - parte dopo 1 secondo, velocità rallentata 30% (65s invece di 50s) */
+        .planet-capitale {
+            offset-path: var(--hippodrome-path);
+            offset-rotate: 0deg;
+            offset-distance: 5%; /* Posizione partenza: segmento superiore sinistro */
+            animation: none;
+            will-change: offset-distance;
+        }
+        
+        .planet-capitale.animating {
+            animation: orbit-capitale 65s linear forwards;
+        }
+        
+        @keyframes orbit-capitale {
+            0% { offset-distance: 5%; }
+            100% { offset-distance: 105%; }
+        }
+        
+        /* Pianeta Scudo - parte 2 secondi dopo pianeta $, stessa velocità */
+        .planet-scudo {
+            offset-path: var(--hippodrome-path);
+            offset-rotate: 0deg;
+            offset-distance: 2%; /* Leggermente indietro rispetto al pianeta $ */
+            animation: none;
+            will-change: offset-distance;
+        }
+        
+        .planet-scudo.animating {
+            animation: orbit-scudo 65s linear forwards;
+        }
+        
+        @keyframes orbit-scudo {
+            0% { offset-distance: 2%; }
+            100% { offset-distance: 102%; }
+        }
+        
+        /* Pianeta Croce Rossa - fermo sul rettilineo inferiore, poi diventa locomotiva */
+        .planet-croce-rossa {
+            offset-path: var(--hippodrome-path);
+            offset-rotate: 0deg;
+            offset-distance: 65%; /* Posizione: rettilineo inferiore, spostato a sinistra */
+            animation: none;
+            will-change: offset-distance;
+        }
+        
+        .planet-croce-rossa.animating {
+            animation: orbit-croce-rossa 65s linear forwards;
+        }
+        
+        @keyframes orbit-croce-rossa {
+            0% { offset-distance: 65%; }
+            100% { offset-distance: 165%; }
+        }
+        
+        /* Ambulanza continua a girare dopo che gli altri si fermano */
+        .planet-ambulanza {
+            animation: orbit-ambulanza-loop 20s linear infinite;
+        }
+        
+        @keyframes orbit-ambulanza-loop {
+            0% { offset-distance: 0%; }
+            100% { offset-distance: 100%; }
+        }
+        
+        /* Lancetta gialla che collega SCAM a Pianeta $ */
+        .lancetta-scam {
+            position: absolute;
+            height: 4px;
+            background: linear-gradient(90deg, rgba(251, 191, 36, 0.9), #FFD700);
+            transform-origin: left center;
+            z-index: 15;
+            opacity: 0;
+            pointer-events: none;
+            box-shadow: 0 0 10px rgba(251, 191, 36, 0.8), 0 0 20px rgba(251, 191, 36, 0.5);
+        }
+        
+        .lancetta-scam::after {
+            content: '$';
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            color: #00FF7F;
+            font-weight: bold;
+            font-size: 1.2rem;
+            text-shadow: 0 0 10px #00FF7F, 0 0 20px #00FF7F;
+        }
+        
+        .lancetta-scam.active {
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+        
+        /* Effetto lacrime sul pianeta $ quando torna */
+        .planet-lacrime::before,
+        .planet-lacrime::after {
+            content: '💧';
+            position: absolute;
+            font-size: 0.8rem;
+            animation: lacrime-cadono 1s ease-in infinite;
+        }
+        
+        .planet-lacrime::before {
+            left: 20%;
+            animation-delay: 0s;
+        }
+        
+        .planet-lacrime::after {
+            right: 20%;
+            animation-delay: 0.5s;
+        }
+        
+        @keyframes lacrime-cadono {
+            0% { 
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(30px);
+                opacity: 0;
+            }
+        }
+        
+        /* Popup retrò stile terminale DOS */
+        .popup-retro {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            z-index: 1000;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        
+        .popup-retro.visible {
+            display: flex;
+        }
+        
+        .popup-retro-content {
+            background: #0a0a0a;
+            border: 3px solid #00FF7F;
+            border-radius: 8px;
+            max-width: 700px;
+            padding: 2rem;
+            font-family: 'Courier New', monospace;
+            color: #00FF7F;
+            box-shadow: 0 0 30px rgba(0, 255, 127, 0.4), inset 0 0 20px rgba(0, 255, 127, 0.1);
+            text-shadow: 0 0 5px rgba(0, 255, 127, 0.8);
+            animation: scanlines 0.1s linear infinite;
+        }
+        
+        @keyframes scanlines {
+            0% { background-position: 0 0; }
+            100% { background-position: 0 4px; }
+        }
+        
+        .popup-retro-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                0deg,
+                rgba(0, 255, 127, 0.03) 0px,
+                rgba(0, 255, 127, 0.03) 1px,
+                transparent 1px,
+                transparent 2px
+            );
+            pointer-events: none;
+        }
+        
+        .popup-retro h2 {
+            color: #00FF7F;
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+        }
+        
+        .popup-retro p {
+            margin-bottom: 1rem;
+            line-height: 1.6;
+            font-size: 0.95rem;
+        }
+        
+        .popup-retro .icon-legend {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+            padding: 1rem;
+            border: 1px dashed #00FF7F;
+        }
+        
+        .popup-retro .icon-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        
+        .popup-retro .icon-item span:first-child {
+            font-size: 1.5rem;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .popup-retro button {
+            display: block;
+            margin: 1.5rem auto 0;
+            padding: 0.8rem 2rem;
+            background: transparent;
+            border: 2px solid #00FF7F;
+            color: #00FF7F;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            cursor: pointer;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+        
+        .popup-retro button:hover {
+            background: #00FF7F;
+            color: #000;
+            box-shadow: 0 0 20px rgba(0, 255, 127, 0.6);
+        }
+        
+        /* Icona ambulanza */
+        .ambulanza-icon {
+            display: none;
+        }
+        
+        .planet-ambulanza .croce-rossa-icon {
+            display: none;
+        }
+        
+        .planet-ambulanza .ambulanza-icon {
+            display: block;
+            font-size: 2rem;
         }
         
         @keyframes orbit-hippodrome {
@@ -4994,114 +5280,279 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </script>
 
             <script>
-            // Countdown timer animation
-            let countdownElement = document.getElementById('scam-countdown');
-            let timeRemaining = 50.0;
+            // ============================================
+            // SISTEMA ANIMAZIONE PIANETI - TRUFFA FINANZIARIA
+            // ============================================
+            
+            // Elementi DOM
+            const planetCapitale = document.getElementById('planet-capitale');
+            const planetScudo = document.getElementById('planet-scudo');
+            const planetCroceRossa = document.getElementById('planet-croce-rossa');
+            const scamPlanet = document.getElementById('scam-planet');
+            const lancettaScam = document.getElementById('lancetta-scam');
+            const popupRetro = document.getElementById('popup-retro');
+            const countdownElement = document.getElementById('scam-countdown');
+            
+            // Configurazione tempistiche (rallentate del 30%)
+            const CYCLE_DURATION = 65000; // 65 secondi invece di 50
+            const DELAY_CAPITALE = 1000; // Pianeta $ parte dopo 1 secondo
+            const DELAY_SCUDO = 3000; // Scudo parte 2 secondi DOPO il capitale (1 + 2 = 3)
+            const SEMICIRCLE_END_TIME = 20000; // Fine semicerchio destro (circa 30% del ciclo)
+            const LANCETTA_START = 12000; // Lancetta appare quando $ entra nel semicerchio destro
+            const LANCETTA_END = 20000; // Lancetta scompare alla fine del semicerchio
+            
+            // Stato animazione
+            let animationPhase = 'waiting'; // waiting, running, paused, train
+            let timeRemaining = 65.0;
             let countdownInterval;
-
+            let lancettaInterval;
+            
+            // Countdown timer (aggiornato a 65s)
             function startCountdown() {
-                timeRemaining = 50.0;
-                if (countdownInterval) {
-                    clearInterval(countdownInterval);
-                }
+                timeRemaining = 65.0;
+                if (countdownInterval) clearInterval(countdownInterval);
+                
                 countdownInterval = setInterval(() => {
                     timeRemaining -= 0.1;
                     if (timeRemaining <= 0) {
                         clearInterval(countdownInterval);
-                        timeRemaining = 50.0;
+                        timeRemaining = 65.0;
                         countdownElement.textContent = timeRemaining.toFixed(1) + 's';
-                        startCountdown(); // Restart countdown
                     } else {
                         countdownElement.textContent = timeRemaining.toFixed(1) + 's';
                     }
                 }, 100);
             }
-
-            // Start countdown on load
-            window.addEventListener('load', startCountdown);
-            </script>
-
-            <script>
-            // Planet elements
-            const youPlanet = document.querySelector('[data-planet="galaxy-yous"]');
-            const defensePlanet = document.querySelector('[data-planet="defense"]');
-            const mentalPlanet = document.querySelector('[data-planet="mental"]');
-            const scamPlanet = document.getElementById('scam-planet');
-
-            // Timeline events
-            const timeline = {
-                coinDispersion: 15000, // 15s - coin loss when You$ is near SCAM (30% of 50s cycle, right side)
-                cycleReset: 50000 // 50s - cycle reset
-            };
-
-            // State variables
-            let animationStartTime = Date.now();
-            let currentCycle = 0;
-
-            // Coin dispersion function
-            function disperseCoins() {
-                const numCoins = 12;
+            
+            // Funzione per aggiornare la lancetta gialla tra SCAM e Pianeta $
+            function updateLancetta() {
+                if (!planetCapitale || !scamPlanet || !lancettaScam) return;
                 
+                const capitaleRect = planetCapitale.getBoundingClientRect();
+                const scamRect = scamPlanet.getBoundingClientRect();
+                
+                const capitaleCenter = {
+                    x: capitaleRect.left + capitaleRect.width / 2,
+                    y: capitaleRect.top + capitaleRect.height / 2
+                };
+                const scamCenter = {
+                    x: scamRect.left + scamRect.width / 2,
+                    y: scamRect.top + scamRect.height / 2
+                };
+                
+                // Calcola distanza e angolo
+                const dx = capitaleCenter.x - scamCenter.x;
+                const dy = capitaleCenter.y - scamCenter.y;
+                const distance = Math.sqrt(dx * dx + dy * dy);
+                const angle = Math.atan2(dy, dx) * (180 / Math.PI);
+                
+                // Posiziona la lancetta
+                lancettaScam.style.left = scamCenter.x + 'px';
+                lancettaScam.style.top = scamCenter.y + 'px';
+                lancettaScam.style.width = distance + 'px';
+                lancettaScam.style.transform = `rotate(${angle}deg)`;
+            }
+            
+            // Attiva/disattiva lancetta
+            function showLancetta() {
+                if (lancettaScam) {
+                    lancettaScam.classList.add('active');
+                    lancettaInterval = setInterval(updateLancetta, 50);
+                }
+            }
+            
+            function hideLancetta() {
+                if (lancettaScam) {
+                    lancettaScam.classList.remove('active');
+                    if (lancettaInterval) clearInterval(lancettaInterval);
+                }
+            }
+            
+            // Dispersione monete (effetto furto)
+            function disperseCoins() {
+                if (!planetCapitale || !scamPlanet) return;
+                
+                const numCoins = 15;
                 for (let i = 0; i < numCoins; i++) {
                     setTimeout(() => {
-                        // Get fresh positions for each coin
-                        const youRect = youPlanet.getBoundingClientRect();
+                        const capitaleRect = planetCapitale.getBoundingClientRect();
                         const scamRect = scamPlanet.getBoundingClientRect();
                         
                         const coin = document.createElement('div');
                         coin.className = 'gold-coin';
                         coin.style.cssText = `
                             position: fixed;
-                            left: ${youRect.left + youRect.width/2}px;
-                            top: ${youRect.top + youRect.height/2}px;
-                            width: 20px;
-                            height: 20px;
+                            left: ${capitaleRect.left + capitaleRect.width/2}px;
+                            top: ${capitaleRect.top + capitaleRect.height/2}px;
+                            width: 18px;
+                            height: 18px;
                             background: radial-gradient(circle, #FFD700, #FFA500);
                             border-radius: 50%;
-                            z-index: 30;
+                            z-index: 35;
                             pointer-events: none;
-                            box-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
+                            box-shadow: 0 0 10px rgba(255, 215, 0, 0.9);
+                            font-size: 10px;
+                            display: flex;
+                            align-items: center;
+                            justify-content: center;
+                            color: #006400;
+                            font-weight: bold;
                         `;
+                        coin.textContent = '$';
                         document.body.appendChild(coin);
                         
-                        // Coin animation to SCAM
                         setTimeout(() => {
-                            coin.style.transition = 'all 1.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                            coin.style.transition = 'all 1.8s cubic-bezier(0.4, 0, 0.2, 1)';
                             coin.style.left = (scamRect.left + scamRect.width/2) + 'px';
                             coin.style.top = (scamRect.top + scamRect.height/2) + 'px';
                             coin.style.opacity = '0';
+                            coin.style.transform = 'scale(0.3)';
                         }, 50);
                         
-                        // Remove coin after animation
-                        setTimeout(() => coin.remove(), 1600);
-                    }, i * 100);
+                        setTimeout(() => coin.remove(), 2000);
+                    }, i * 120);
                 }
                 
-                // SCAM acquisition effect
+                // Effetto glow SCAM
                 scamPlanet.style.transition = 'all 0.5s';
-                scamPlanet.style.boxShadow = '0 0 100px rgba(255, 215, 0, 1), 0 0 150px rgba(255, 165, 0, 0.8)';
+                scamPlanet.style.boxShadow = '0 0 120px rgba(255, 215, 0, 1), 0 0 180px rgba(255, 165, 0, 0.9)';
                 setTimeout(() => {
                     scamPlanet.style.boxShadow = '0 0 50px rgba(220, 38, 38, 0.9)';
-                }, 1500);
+                }, 2000);
             }
-
-            // Timeline controller
-            function runAnimationCycle() {
-                animationStartTime = Date.now();
+            
+            // Mostra popup retrò
+            function showPopup() {
+                if (popupRetro) {
+                    popupRetro.classList.add('visible');
+                    animationPhase = 'paused';
+                    
+                    // Pausa countdown
+                    if (countdownInterval) clearInterval(countdownInterval);
+                }
+            }
+            
+            // Chiudi popup e avvia treno
+            function closePopupAndStartTrain() {
+                if (popupRetro) {
+                    popupRetro.classList.remove('visible');
+                }
                 
-                setTimeout(disperseCoins, timeline.coinDispersion);
+                animationPhase = 'train';
                 
-                // Reset for next cycle
+                // Trasforma Croce Rossa in Ambulanza
+                if (planetCroceRossa) {
+                    const croceIcon = planetCroceRossa.querySelector('.croce-rossa-icon');
+                    const ambulanzaIcon = planetCroceRossa.querySelector('.ambulanza-icon');
+                    const label = planetCroceRossa.querySelector('.planet-label');
+                    
+                    if (croceIcon) croceIcon.style.display = 'none';
+                    if (ambulanzaIcon) ambulanzaIcon.style.display = 'block';
+                    if (label) label.textContent = '🚑 Ambulanza';
+                    
+                    // Avvia movimento Croce Rossa/Ambulanza come locomotiva
+                    planetCroceRossa.classList.add('animating');
+                }
+                
+                // Aggiungi lacrime al pianeta $
+                if (planetCapitale) {
+                    planetCapitale.classList.add('planet-lacrime');
+                }
+                
+                // Dopo 3 secondi, ferma i primi due pianeti e l'ambulanza continua
                 setTimeout(() => {
-                    currentCycle++;
-                    runAnimationCycle(); // Restart cycle
-                }, timeline.cycleReset);
+                    // Ferma Capitale e Scudo
+                    if (planetCapitale) {
+                        planetCapitale.style.animationPlayState = 'paused';
+                        planetCapitale.classList.remove('planet-lacrime');
+                    }
+                    if (planetScudo) {
+                        planetScudo.style.animationPlayState = 'paused';
+                    }
+                    
+                    // Ambulanza continua in loop
+                    if (planetCroceRossa) {
+                        planetCroceRossa.classList.remove('animating');
+                        planetCroceRossa.classList.add('planet-ambulanza');
+                        
+                        // Dopo altri 5 secondi, torna icona croce rossa e si ferma
+                        setTimeout(() => {
+                            const croceIcon = planetCroceRossa.querySelector('.croce-rossa-icon');
+                            const ambulanzaIcon = planetCroceRossa.querySelector('.ambulanza-icon');
+                            const label = planetCroceRossa.querySelector('.planet-label');
+                            
+                            if (croceIcon) croceIcon.style.display = 'flex';
+                            if (ambulanzaIcon) ambulanzaIcon.style.display = 'none';
+                            if (label) label.textContent = '❤️‍🩹 Pronto Soccorso';
+                            
+                            planetCroceRossa.classList.remove('planet-ambulanza');
+                            
+                            // Riavvia ciclo dopo 2 secondi
+                            setTimeout(restartAnimationCycle, 2000);
+                        }, 8000);
+                    }
+                }, 3000);
             }
-
-            // Start animation on load
+            
+            // Riavvia ciclo animazione
+            function restartAnimationCycle() {
+                // Reset classi animazione
+                if (planetCapitale) {
+                    planetCapitale.classList.remove('animating', 'planet-lacrime');
+                    planetCapitale.style.animationPlayState = '';
+                    planetCapitale.style.offsetDistance = '5%';
+                }
+                if (planetScudo) {
+                    planetScudo.classList.remove('animating');
+                    planetScudo.style.animationPlayState = '';
+                    planetScudo.style.offsetDistance = '2%';
+                }
+                if (planetCroceRossa) {
+                    planetCroceRossa.classList.remove('animating', 'planet-ambulanza');
+                    planetCroceRossa.style.offsetDistance = '65%';
+                }
+                
+                // Riavvia dopo breve pausa
+                setTimeout(startAnimationSequence, 1000);
+            }
+            
+            // Sequenza principale animazione
+            function startAnimationSequence() {
+                animationPhase = 'running';
+                startCountdown();
+                
+                // 1. Dopo 1 secondo: parte Pianeta $ (Capitale)
+                setTimeout(() => {
+                    if (planetCapitale) {
+                        planetCapitale.classList.add('animating');
+                    }
+                }, DELAY_CAPITALE);
+                
+                // 2. Dopo 3 secondi: parte Scudo (2 sec dopo Capitale)
+                setTimeout(() => {
+                    if (planetScudo) {
+                        planetScudo.classList.add('animating');
+                    }
+                }, DELAY_SCUDO);
+                
+                // 3. Lancetta gialla durante semicerchio destro
+                setTimeout(showLancetta, LANCETTA_START);
+                setTimeout(() => {
+                    hideLancetta();
+                    disperseCoins();
+                }, LANCETTA_END);
+                
+                // 4. Popup dopo fine semicerchio destro
+                setTimeout(showPopup, SEMICIRCLE_END_TIME + 3000);
+            }
+            
+            // Avvio al caricamento
             window.addEventListener('load', () => {
-                setTimeout(runAnimationCycle, 1000);
+                setTimeout(startAnimationSequence, 500);
             });
+            
+            // Esponi funzione per popup
+            window.closePopupAndStartTrain = closePopupAndStartTrain;
             </script>
         </body>
         </html>
