@@ -5364,16 +5364,23 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             function updateLancetta() {
                 if (!planetCapitale || !scamPlanet || !lancettaLine) return;
                 
+                // Ottieni le coordinate dei pianeti
                 const capitaleRect = planetCapitale.getBoundingClientRect();
                 const scamRect = scamPlanet.getBoundingClientRect();
                 
-                // Centro del pianeta SCAM (inizio del segmento)
+                // Verifica che i rettangoli siano validi
+                if (scamRect.width === 0 || capitaleRect.width === 0) return;
+                
+                // Centro del pianeta SCAM (inizio del segmento) - coordinate viewport
                 const scamX = scamRect.left + scamRect.width / 2;
                 const scamY = scamRect.top + scamRect.height / 2;
                 
                 // Centro del pianeta Capitale $ (fine del segmento)
                 const capitaleX = capitaleRect.left + capitaleRect.width / 2;
                 const capitaleY = capitaleRect.top + capitaleRect.height / 2;
+                
+                // Debug: log delle coordinate
+                console.log('SCAM:', scamX, scamY, 'Capitale:', capitaleX, capitaleY);
                 
                 // Aggiorna la linea SVG: da SCAM a Capitale
                 lancettaLine.setAttribute('x1', scamX);
@@ -5385,17 +5392,12 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 lancettaPerno.setAttribute('cx', scamX);
                 lancettaPerno.setAttribute('cy', scamY);
                 
-                // Posiziona il simbolo $ vicino al pianeta Capitale
-                // Calcola un punto leggermente prima del centro del Capitale
-                const dx = capitaleX - scamX;
-                const dy = capitaleY - scamY;
-                const dist = Math.sqrt(dx * dx + dy * dy);
-                const offsetRatio = (dist - 30) / dist; // 30px prima del centro
-                const dollaroX = scamX + dx * offsetRatio;
-                const dollaroY = scamY + dy * offsetRatio;
+                // Posiziona il simbolo $ a metà del segmento
+                const midX = (scamX + capitaleX) / 2;
+                const midY = (scamY + capitaleY) / 2;
                 
-                lancettaDollaro.setAttribute('x', dollaroX);
-                lancettaDollaro.setAttribute('y', dollaroY);
+                lancettaDollaro.setAttribute('x', midX);
+                lancettaDollaro.setAttribute('y', midY);
             }
             
             // Attiva/disattiva lancetta SVG
