@@ -1126,11 +1126,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             </div>
         </div>
 
-        <!-- Popup Retrò - Spiegazione Simbologia -->
+        <!-- Popup Retrò - Spiegazione Simbologia (Fine Lezione) -->
         <div id="popup-retro" class="popup-retro">
             <div class="popup-retro-content">
-                <h2>⚠️ SCAM ALERT ⚠️</h2>
-                <p>> Hai appena assistito alla simulazione di una truffa finanziaria...</p>
+                <h2>📚 LEZIONE COMPLETATA 📚</h2>
+                <p>> Hai osservato la simulazione di una truffa finanziaria...</p>
                 
                 <div class="icon-legend">
                     <div class="icon-item">
@@ -1147,14 +1147,14 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     </div>
                     <div class="icon-item">
                         <span>🚑</span>
-                        <span><strong>Pronto Soccorso</strong> - L'assistenza sanitaria/legale che interviene DOPO il furto</span>
+                        <span><strong>Pronto Soccorso</strong> - L'assistenza che interviene SOLO DOPO il furto</span>
                     </div>
                 </div>
                 
-                <p>> La sequenza dimostra che senza protezione PREVENTIVA, il capitale viene derubato e resta solo il "pronto soccorso" post-truffa.</p>
-                <p>> CHIUDI per far partire il treno dei pianeti verso il punto di partenza...</p>
+                <p style="color: #FFD700; font-weight: bold;">> MORALE: Senza protezione PREVENTIVA, il capitale viene derubato. Resta solo il "pronto soccorso" post-truffa!</p>
+                <p>> Premi il pulsante per vedere il ritorno dei pianeti al punto di partenza...</p>
                 
-                <button id="popup-close-btn" onclick="closePopupAndStartTrain()">[ CHIUDI E CONTINUA ]</button>
+                <button id="popup-close-btn" onclick="closePopupAndStartTrain()">[ CONTINUA → RITORNO ]</button>
             </div>
         </div>
 
@@ -5300,6 +5300,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             const SEMICIRCLE_END_TIME = 20000; // Fine semicerchio destro (circa 30% del ciclo)
             const LANCETTA_START = 12000; // Lancetta appare quando $ entra nel semicerchio destro
             const LANCETTA_END = 20000; // Lancetta scompare alla fine del semicerchio
+            const POPUP_TIME = 60000; // Popup appare alla fine del percorso (lezione completata)
             
             // Stato animazione
             let animationPhase = 'waiting'; // waiting, running, paused, train
@@ -5542,8 +5543,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     disperseCoins();
                 }, LANCETTA_END);
                 
-                // 4. Popup dopo fine semicerchio destro
-                setTimeout(showPopup, SEMICIRCLE_END_TIME + 3000);
+                // 4. Popup alla FINE del percorso (lezione completata)
+                setTimeout(showPopup, POPUP_TIME);
             }
             
             // Avvio al caricamento
