@@ -1318,33 +1318,47 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             100% { offset-distance: 100%; }
         }
         
-        /* Lancetta gialla che collega SCAM a Pianeta $ */
+        /* Lancetta gialla che collega SCAM a Pianeta $ - come lancetta di cronometro */
         .lancetta-scam {
-            position: absolute;
-            height: 4px;
-            background: linear-gradient(90deg, rgba(251, 191, 36, 0.9), #FFD700);
+            position: fixed;
+            height: 6px;
+            background: linear-gradient(90deg, #FFD700, rgba(251, 191, 36, 0.7));
             transform-origin: left center;
-            z-index: 15;
+            z-index: 30;
             opacity: 0;
             pointer-events: none;
-            box-shadow: 0 0 10px rgba(251, 191, 36, 0.8), 0 0 20px rgba(251, 191, 36, 0.5);
+            box-shadow: 0 0 15px rgba(251, 191, 36, 1), 0 0 30px rgba(251, 191, 36, 0.7);
+            border-radius: 3px;
+        }
+        
+        .lancetta-scam::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: #FFD700;
+            border-radius: 50%;
+            box-shadow: 0 0 10px rgba(251, 191, 36, 1);
         }
         
         .lancetta-scam::after {
             content: '$';
             position: absolute;
-            left: 50%;
+            right: -5px;
             top: 50%;
-            transform: translate(-50%, -50%);
+            transform: translateY(-50%);
             color: #00FF7F;
             font-weight: bold;
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             text-shadow: 0 0 10px #00FF7F, 0 0 20px #00FF7F;
         }
         
         .lancetta-scam.active {
             opacity: 1;
-            transition: opacity 0.5s ease;
+            transition: opacity 0.3s ease;
         }
         
         /* Effetto lacrime sul pianeta $ quando torna */
@@ -5325,33 +5339,37 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                 }, 100);
             }
             
-            // Funzione per aggiornare la lancetta gialla tra SCAM e Pianeta $
+            // Funzione per aggiornare la lancetta gialla - come lancetta di cronometro
+            // Centro nel pianeta SCAM, punta verso il pianeta $ (Capitale)
             function updateLancetta() {
                 if (!planetCapitale || !scamPlanet || !lancettaScam) return;
                 
                 const capitaleRect = planetCapitale.getBoundingClientRect();
                 const scamRect = scamPlanet.getBoundingClientRect();
                 
-                const capitaleCenter = {
-                    x: capitaleRect.left + capitaleRect.width / 2,
-                    y: capitaleRect.top + capitaleRect.height / 2
-                };
+                // Centro della lancetta = centro del pianeta SCAM
                 const scamCenter = {
                     x: scamRect.left + scamRect.width / 2,
                     y: scamRect.top + scamRect.height / 2
                 };
                 
-                // Calcola distanza e angolo
+                // Punta della lancetta = centro del pianeta Capitale $
+                const capitaleCenter = {
+                    x: capitaleRect.left + capitaleRect.width / 2,
+                    y: capitaleRect.top + capitaleRect.height / 2
+                };
+                
+                // Calcola distanza e angolo dal centro SCAM verso Capitale
                 const dx = capitaleCenter.x - scamCenter.x;
                 const dy = capitaleCenter.y - scamCenter.y;
                 const distance = Math.sqrt(dx * dx + dy * dy);
                 const angle = Math.atan2(dy, dx) * (180 / Math.PI);
                 
-                // Posiziona la lancetta
+                // Posiziona la lancetta: parte dal centro di SCAM, punta verso Capitale
                 lancettaScam.style.left = scamCenter.x + 'px';
                 lancettaScam.style.top = scamCenter.y + 'px';
                 lancettaScam.style.width = distance + 'px';
-                lancettaScam.style.transform = `rotate(${angle}deg)`;
+                lancettaScam.style.transform = `translateY(-50%) rotate(${angle}deg)`;
             }
             
             // Attiva/disattiva lancetta
