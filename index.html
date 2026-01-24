@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- Updated: 2026-01-21 - SEO Optimized for www.scam-radar.com -->
+<!-- Updated: 2026-01-24 - SEO Optimized for www.scam-radar.com -->
 <html lang="en" prefix="og: https://ogp.me/ns#">
 <head>
     <!-- Google Tag Manager -->
@@ -35,7 +35,7 @@
     
     <!-- Open Graph (Facebook, LinkedIn) -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.scam-radar.com/referenze.html">
+    <meta property="og:url" content="https://www.scam-radar.com/">
     <meta property="og:title" content="Scam Radar - International Financial Fraud Protection Resources">
     <meta property="og:description" content="Comprehensive institutional references for fraud victims: European Parliament, ESMA, FCA, SEC, IOSCO. 25 years fighting for consumer rights. Lawyer Marcello Stanca - AMEV Florence President.">
     <meta property="og:image" content="https://www.scam-radar.com/financial_defense_shield_final.svg">
@@ -823,7 +823,7 @@
                 });
 
                 const stars = starsContainer.querySelectorAll('.star');
-                const hasVoted = localStorage.getItem(`voted_${contentId}`);
+                let hasVoted = !!localStorage.getItem(`voted_${contentId}`);
 
                 if (hasVoted) {
                     stars.forEach(star => star.classList.add('disabled'));
@@ -854,6 +854,7 @@
                         const result = await this.submitRating(contentId, rating);
 
                         if (result.success) {
+                            hasVoted = true;
                             stars.forEach((s, i) => {
                                 if (i <= index) s.classList.add('filled');
                                 s.classList.add('disabled');
